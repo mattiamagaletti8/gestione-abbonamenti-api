@@ -1,0 +1,5 @@
+# Copiare questo file come config/local.properties e inserire le proprie credenziali.
+# Il file local.properties e' escluso da Git: non pubblicarlo.
+spring.datasource.url=jdbc:postgresql://127.0.0.1:5432/mattia_abbonamenti
+spring.datasource.username=INSERISCI_UTENTE_POSTGRESQL
+spring.datasource.password=INSERISCI_PASSWORD_POSTGRESQL

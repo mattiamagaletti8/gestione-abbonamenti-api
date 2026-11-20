@@ -1,0 +1,14 @@
+/target/
+/config/local.properties
+/logs/
+/.settings/
+/*.log
+/.classpath
+/.project
+/.factorypath
+/*.launch
+/verifica-api.json
+.env
+.env.*
+*.pem
+*.key
