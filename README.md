@@ -150,9 +150,11 @@ Fermare e riavviare l'applicazione dopo l'aggiornamento.
 
 ## Postman
 
-Importare `GestioneAbbonamenti.postman_collection.json` e lanciare le richieste nell'ordine indicato.
-La collection genera un'email diversa ogni volta e memorizza automaticamente gli ID creati.
-Le richieste negative verificano errori 400 e 404. I dati di esempio restano nel database.
+Importare `GestioneAbbonamenti.postman_collection.json`: contiene sette richieste da eseguire manualmente.
+Dopo aver creato il cliente, copiare il suo ID nella variabile di collection `clienteId`.
+Dopo aver creato l'abbonamento, copiare il suo ID nella variabile `abbonamentoId`.
+Per creare un altro cliente, cambiare l'email nel corpo della prima richiesta.
+I dati creati restano nel database.
 
 ## Esercizi SQL
 
@@ -162,6 +164,6 @@ Eseguire le query di `esercizi.sql` per esercitarsi con join, filtri e aggregazi
 ## Compilazione
 
 Eseguire `.\mvnw.cmd package` su Windows oppure `./mvnw package` su Linux/macOS.
-Il progetto non include test automatici JUnit; le API si possono provare manualmente con Swagger UI o Postman.
+Le API si possono provare manualmente con Swagger UI o Postman.
 
 Questo e' un progetto didattico locale: non include ancora autenticazione, fatturazione o pagamenti reali.

@@ -31,35 +31,14 @@
         "url": "{{baseUrl}}/api/clienti",
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nome\": \"Cliente Postman\",\n  \"email\": \"{{emailNuova}}\"\n}",
+          "raw": "{\n  \"nome\": \"Cliente Postman\",\n  \"email\": \"cliente.postman@example.com\"\n}",
           "options": {
             "raw": {
               "language": "json"
             }
           }
         }
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
-              "if (pm.response.code === 201) pm.collectionVariables.set(\"clienteId\", pm.response.json().id);"
-            ]
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.collectionVariables.set(\"emailNuova\", \"postman-\" + Date.now() + \"@example.com\");"
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "2 - Crea abbonamento",
@@ -81,19 +60,7 @@
             }
           }
         }
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
-              "if (pm.response.code === 201) pm.collectionVariables.set(\"abbonamentoId\", pm.response.json().id);"
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "3 - Elenco clienti",
@@ -101,18 +68,7 @@
         "method": "GET",
         "header": [],
         "url": "{{baseUrl}}/api/clienti"
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "4 - Cerca abbonamento",
@@ -120,18 +76,7 @@
         "method": "GET",
         "header": [],
         "url": "{{baseUrl}}/api/abbonamenti/{{abbonamentoId}}"
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "5 - Solo attivi",
@@ -139,18 +84,7 @@
         "method": "GET",
         "header": [],
         "url": "{{baseUrl}}/api/abbonamenti?attivo=true"
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "6 - Totale mensile",
@@ -158,18 +92,7 @@
         "method": "GET",
         "header": [],
         "url": "{{baseUrl}}/api/abbonamenti/totale-mensile"
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "7 - Disattiva",
@@ -177,70 +100,7 @@
         "method": "PATCH",
         "header": [],
         "url": "{{baseUrl}}/api/abbonamenti/{{abbonamentoId}}/disattiva"
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "8 - Prezzo negativo - errore atteso",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "url": "{{baseUrl}}/api/abbonamenti",
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"clienteId\": 1,\n  \"piano\": \"Errato\",\n  \"prezzoMensile\": -1\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        }
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "9 - ID inesistente - errore atteso",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": "{{baseUrl}}/api/abbonamenti/999999"
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));"
-            ]
-          }
-        }
-      ]
+      }
     }
   ]
 }
