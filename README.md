@@ -2,7 +2,7 @@
 
 Progetto didattico di Mattia Magaletti per esercitarsi con Java 17, Spring Boot,
 API REST, JPA/Hibernate e PostgreSQL. Realizzato con supporto AI e usato per approfondire
-architettura a livelli, validazione, persistenza e test.
+architettura a livelli, validazione e persistenza.
 
 Permette di creare clienti e abbonamenti, consultarli, disattivarli e calcolare
 il totale mensile degli abbonamenti attivi. Il database si chiama `mattia_abbonamenti`.
@@ -159,12 +159,9 @@ Le richieste negative verificano errori 400 e 404. I dati di esempio restano nel
 Collegarsi a PostgreSQL locale e selezionare `mattia_abbonamenti`.
 Eseguire le query di `esercizi.sql` per esercitarsi con join, filtri e aggregazioni.
 
-## Test
+## Compilazione
 
-Eseguire `.\mvnw.cmd test` su Windows oppure `./mvnw test` su Linux/macOS.
-I quattro test verificano il ciclo creazione/disattivazione/totale, i dati invalidi,
-gli ID inesistenti e le email duplicate.
-I test usano H2 in memoria separato: non modificano il database PostgreSQL dell'esercizio.
-Non richiedono credenziali PostgreSQL o il file `config/local.properties`.
+Eseguire `.\mvnw.cmd package` su Windows oppure `./mvnw package` su Linux/macOS.
+Il progetto non include test automatici JUnit; le API si possono provare manualmente con Swagger UI o Postman.
 
 Questo e' un progetto didattico locale: non include ancora autenticazione, fatturazione o pagamenti reali.
